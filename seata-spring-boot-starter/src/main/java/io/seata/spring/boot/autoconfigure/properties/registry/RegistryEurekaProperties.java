@@ -35,6 +35,11 @@ public class RegistryEurekaProperties {
     }
 
     public RegistryEurekaProperties setServiceUrl(String serviceUrl) {
+        try{
+            URL url = new URL(serviceUrl);
+        }catch (MalformedURLException e){
+            throw new IllegalArgumentException("Illegal ServiceUrl", e);
+        }
         this.serviceUrl = serviceUrl;
         return this;
     }
